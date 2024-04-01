@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>What should I cook today?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
+
+</head>
+
+<body>
+  <h1>What should I cook today?</h1>
+  <form action="/check" method="POST">
+    <label for="dishType">Dish Type:</label>
+    <select type="text" id="txtAutoComplete" list="dishTypes" name="dishType">
+    <option id=""></option>
+        <% dishList.forEach((dish)=>{%>
+          <option id="<%= dish%>">
+            <%= dish%></option>
+        <%})%>
+    </select>
+    <label for="cuisineType">Cuisine:</label>
+    <input type="text" id="txtAutoComplete" list="cuisineTypes" name="cuisineType">
+      <datalist id="cuisineTypes">
+        <option id="">Any</option>
+        <% cuisineList.forEach((cuisine)=>{%>
+          <option id="<%= cuisine%>">
+            <%= cuisine%></option>
+        <%})%>
+      </datalist>
+    <input type="submit" value="Submit">
+  </form>
+  <section>
+    <h3>Here is a recipe for <%- cuisine %> <%- dish %></h3>
+    <p>
+      <img src="<%= image%>" />
+    </p>
+      <h3 class="name">
+        <%- name %>
+      </h3>
+    <p class="summary">
+      <%- summary %>
+    </p>
+  </section>
+</body>
+
+</html>
